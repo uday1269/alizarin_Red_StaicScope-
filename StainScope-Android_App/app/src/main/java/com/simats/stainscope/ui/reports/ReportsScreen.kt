@@ -1,0 +1,517 @@
+package com.simats.stainscope.ui.reports
+
+import androidx.compose.animation.*
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.outlined.CompareArrows
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
+import androidx.compose.material3.*
+import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
+import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.simats.stainscope.ui.theme.*
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ReportsScreen(
+    onNavigateToDashboard: () -> Unit,
+    onNavigateToAnalysis: () -> Unit,
+    onNavigateToCompare: (String?) -> Unit,
+    onNavigateToProfile: () -> Unit,
+    onNavigateBack: () -> Unit,
+    onNavigateToResults: (String) -> Unit,
+    viewModel: ReportsViewModel = viewModel()
+) {
+    val uiState by viewModel.uiState.collectAsState()
+    var visible by remember { mutableStateOf(false) }
+    val selectedReports = uiState.reports.filter { it.isSelected }
+    val selectedCount = selectedReports.size
+    val displayedReports = uiState.filteredReports
+
+    LaunchedEffect(Unit) {
+        visible = true
+        viewModel.loadUserAnalyses()
+    }
+
+    Scaffold(
+        topBar = {
+            Column(modifier = Modifier.background(MaterialTheme.colorScheme.surface)) {
+                TopAppBar(
+                    title = { 
+                        Text(
+                            "Lab Reports", 
+                            fontWeight = FontWeight.Black, 
+                            fontSize = 22.sp,
+                            color = MaterialTheme.colorScheme.onSurface
+                        ) 
+                    },
+                    navigationIcon = {
+                        IconButton(onClick = onNavigateBack) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.ArrowBack, 
+                                contentDescription = "Back",
+                                tint = MaterialTheme.colorScheme.onSurface
+                            )
+                        }
+                    },
+                    actions = {
+                        IconButton(onClick = { viewModel.loadUserAnalyses(isRefresh = true) }) {
+                            Icon(Icons.Outlined.Refresh, contentDescription = "Refresh", tint = MaterialTheme.colorScheme.onSurface)
+                        }
+                        IconButton(onClick = onNavigateToProfile) {
+                            Surface(
+                                shape = CircleShape,
+                                color = PrimaryMaroon.copy(alpha = 0.1f),
+                                modifier = Modifier.size(38.dp)
+                            ) {
+                                Box(contentAlignment = Alignment.Center) {
+                                    Text("SC", color = PrimaryMaroon, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                                }
+                            }
+                        }
+                        Spacer(modifier = Modifier.width(12.dp))
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = MaterialTheme.colorScheme.surface)
+                )
+
+                ScrollableTabRow(
+                    selectedTabIndex = 3,
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    contentColor = PrimaryMaroon,
+                    edgePadding = 16.dp,
+                    divider = {},
+                    indicator = { tabPositions ->
+                        if (tabPositions.size > 3) {
+                            TabRowDefaults.SecondaryIndicator(
+                                Modifier.tabIndicatorOffset(tabPositions[3]),
+                                color = PrimaryMaroon,
+                                height = 3.dp
+                            )
+                        }
+                    }
+                ) {
+                    val tabs = listOf(
+                        "Dashboard" to Icons.Outlined.Dashboard,
+                        "Upload & Analyze" to Icons.Outlined.CloudUpload,
+                        "Compare" to Icons.AutoMirrored.Outlined.CompareArrows,
+                        "Reports" to Icons.Outlined.Description
+                    )
+                    tabs.forEachIndexed { index, pair ->
+                        Tab(
+                            selected = index == 3,
+                            onClick = { 
+                                when(index) {
+                                    0 -> onNavigateToDashboard()
+                                    1 -> onNavigateToAnalysis()
+                                    2 -> onNavigateToCompare(null)
+                                    3 -> { viewModel.loadUserAnalyses() }
+                                }
+                            },
+                            text = { 
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    modifier = Modifier.padding(vertical = 12.dp)
+                                ) {
+                                    Icon(
+                                        imageVector = pair.second,
+                                        contentDescription = null,
+                                        modifier = Modifier.size(16.dp),
+                                        tint = if (index == 3) PrimaryMaroon else MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                    Spacer(modifier = Modifier.width(8.dp))
+                                    Text(
+                                        text = pair.first, 
+                                        fontWeight = if (index == 3) FontWeight.Bold else FontWeight.Medium,
+                                        fontSize = 13.sp,
+                                        color = if (index == 3) PrimaryMaroon else MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        )
+                    }
+                }
+                HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+            }
+        }
+    ) { padding ->
+        AnimatedVisibility(
+            visible = visible,
+            enter = fadeIn(animationSpec = tween(600)) + slideInVertically(initialOffsetY = { 60 })
+        ) {
+            PullToRefreshBox(
+                isRefreshing = uiState.isRefreshing,
+                onRefresh = { viewModel.loadUserAnalyses(isRefresh = true) },
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(padding)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                ) {
+                    // Action Bar (Compare Selected)
+                    if (selectedCount > 0) {
+                        Surface(
+                            modifier = Modifier.fillMaxWidth(),
+                            color = MaterialTheme.colorScheme.surface,
+                            shadowElevation = 4.dp
+                        ) {
+                            Row(
+                                modifier = Modifier.padding(16.dp),
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.SpaceBetween
+                            ) {
+                                Text(
+                                    text = "$selectedCount Reports Selected",
+                                    fontWeight = FontWeight.Bold,
+                                    color = PrimaryMaroon
+                                )
+                                Button(
+                                    onClick = { 
+                                        val ids = selectedReports.joinToString(",") { it.id }
+                                        onNavigateToCompare(ids) 
+                                    },
+                                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryMaroon),
+                                    shape = RoundedCornerShape(8.dp),
+                                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp)
+                                ) {
+                                    Icon(Icons.AutoMirrored.Outlined.CompareArrows, null, Modifier.size(18.dp))
+                                    Spacer(Modifier.width(8.dp))
+                                    Text("Compare Selected ($selectedCount)", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                                }
+                            }
+                        }
+                    }
+
+                    // Search Bar
+                    Surface(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp, vertical = 14.dp),
+                        shape = RoundedCornerShape(16.dp),
+                        color = MaterialTheme.colorScheme.surface,
+                        shadowElevation = 2.dp,
+                        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)
+                    ) {
+                        OutlinedTextField(
+                            value = uiState.searchQuery,
+                            onValueChange = viewModel::onSearchQueryChange,
+                            modifier = Modifier.fillMaxWidth(),
+                            placeholder = { Text("Search by ID, sample name, or stain type...", fontSize = 14.sp, color = MaterialTheme.colorScheme.onSurfaceVariant) },
+                            leadingIcon = { Icon(Icons.Outlined.Search, contentDescription = null, tint = PrimaryMaroon) },
+                            trailingIcon = {
+                                if (uiState.searchQuery.isNotEmpty()) {
+                                    IconButton(onClick = { viewModel.onSearchQueryChange("") }) {
+                                        Icon(Icons.Default.Close, contentDescription = "Clear", tint = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.size(18.dp))
+                                    }
+                                }
+                            },
+                            shape = RoundedCornerShape(16.dp),
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = Color.Transparent,
+                                unfocusedBorderColor = Color.Transparent,
+                                focusedContainerColor = Color.Transparent,
+                                unfocusedContainerColor = Color.Transparent,
+                                cursorColor = PrimaryMaroon,
+                                focusedTextColor = MaterialTheme.colorScheme.onSurface,
+                                unfocusedTextColor = MaterialTheme.colorScheme.onSurface
+                            ),
+                            singleLine = true
+                        )
+                    }
+
+                    // Filter Chips
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp)
+                    ) {
+                        ReportFilterChip(
+                            label = "All Reports",
+                            isSelected = uiState.selectedFilter == "All Reports",
+                            onClick = { viewModel.onFilterChange("All Reports") }
+                        )
+                        ReportFilterChip(
+                            label = "High Mineralization",
+                            isSelected = uiState.selectedFilter == "High Mineralization",
+                            onClick = { viewModel.onFilterChange("High Mineralization") }
+                        )
+                        ReportFilterChip(
+                            label = "Low Mineralization",
+                            isSelected = uiState.selectedFilter == "Low Mineralization",
+                            onClick = { viewModel.onFilterChange("Low Mineralization") }
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    if (uiState.isLoading && !uiState.isRefreshing && uiState.reports.isEmpty()) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .weight(1f),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                                CircularProgressIndicator(color = PrimaryMaroon, strokeWidth = 3.dp)
+                                Spacer(modifier = Modifier.height(16.dp))
+                                Text("Loading lab reports from database...", fontSize = 13.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                            }
+                        }
+                    } else if (displayedReports.isEmpty()) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .weight(1f)
+                                .padding(32.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Surface(
+                                    shape = CircleShape,
+                                    color = MaterialTheme.colorScheme.surfaceVariant,
+                                    modifier = Modifier.size(64.dp)
+                                ) {
+                                    Box(contentAlignment = Alignment.Center) {
+                                        Icon(
+                                            imageVector = Icons.Outlined.Description,
+                                            contentDescription = null,
+                                            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                                            modifier = Modifier.size(32.dp)
+                                        )
+                                    }
+                                }
+                                Spacer(modifier = Modifier.height(16.dp))
+                                Text(
+                                    text = if (uiState.searchQuery.isNotEmpty() || uiState.selectedFilter != "All Reports")
+                                        "No matching reports found"
+                                    else
+                                        "No lab reports available",
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = MaterialTheme.colorScheme.onSurface
+                                )
+                                Spacer(modifier = Modifier.height(6.dp))
+                                Text(
+                                    text = if (uiState.searchQuery.isNotEmpty() || uiState.selectedFilter != "All Reports")
+                                        "Try adjusting your search query or filter chips."
+                                    else
+                                        "Perform an analysis in the workstation to generate live quantification reports.",
+                                    fontSize = 13.sp,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                    textAlign = TextAlign.Center
+                                )
+                                if (uiState.reports.isEmpty()) {
+                                    Spacer(modifier = Modifier.height(20.dp))
+                                    Button(
+                                        onClick = onNavigateToAnalysis,
+                                        colors = ButtonDefaults.buttonColors(containerColor = PrimaryMaroon),
+                                        shape = RoundedCornerShape(12.dp)
+                                    ) {
+                                        Icon(Icons.Outlined.CloudUpload, contentDescription = null, modifier = Modifier.size(16.dp))
+                                        Spacer(modifier = Modifier.width(8.dp))
+                                        Text("Upload & Analyze", fontWeight = FontWeight.Bold)
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        LazyColumn(
+                            modifier = Modifier.fillMaxSize(),
+                            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                            verticalArrangement = Arrangement.spacedBy(12.dp)
+                        ) {
+                            items(displayedReports, key = { it.id }) { report ->
+                                ScientificReportItem(
+                                    report = report,
+                                    onToggleSelection = { viewModel.toggleReportSelection(report.id) },
+                                    onViewDetails = { onNavigateToResults(report.id) }
+                                )
+                            }
+                            
+                            item(key = "bottom_spacer") {
+                                Spacer(modifier = Modifier.height(40.dp))
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun ScientificReportItem(
+    report: ReportItem,
+    onToggleSelection: () -> Unit,
+    onViewDetails: () -> Unit
+) {
+    Surface(
+        modifier = Modifier
+            .fillMaxWidth()
+            .shadow(2.dp, RoundedCornerShape(16.dp))
+            .clickable { onViewDetails() },
+        shape = RoundedCornerShape(16.dp),
+        color = if (report.isSelected) PrimaryMaroon.copy(alpha = 0.03f) else MaterialTheme.colorScheme.surface,
+        border = BorderStroke(1.dp, if (report.isSelected) PrimaryMaroon else MaterialTheme.colorScheme.outlineVariant)
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.Top
+            ) {
+                Checkbox(
+                    checked = report.isSelected,
+                    onCheckedChange = { onToggleSelection() },
+                    colors = CheckboxDefaults.colors(checkedColor = PrimaryMaroon),
+                    modifier = Modifier.size(24.dp).padding(top = 4.dp)
+                )
+                Spacer(modifier = Modifier.width(12.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = report.name,
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 4.dp)) {
+                        Text(
+                            text = "ID: ${report.id}",
+                            fontSize = 11.sp,
+                            color = PrimaryMaroon,
+                            fontWeight = FontWeight.Black
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(text = "•", fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(text = report.magnification, fontSize = 11.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                }
+                
+                Surface(
+                    color = report.statusColor.copy(alpha = 0.1f),
+                    shape = RoundedCornerShape(6.dp)
+                ) {
+                    Text(
+                        text = report.status.uppercase(),
+                        fontSize = 9.sp,
+                        fontWeight = FontWeight.Black,
+                        color = report.statusColor,
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
+                        letterSpacing = 0.5.sp
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+            HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Scientific Metrics Row
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                MetricSmallBlock("MINERALIZED AREA", report.mineralizedArea, PrimaryMaroon)
+                MetricSmallBlock("STAIN INTENSITY", report.stainIntensity, MaterialTheme.colorScheme.onSurface)
+                MetricSmallBlock("CALCIUM DENSITY", report.calciumDensity, SuccessGreen)
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+            
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = report.date,
+                    fontSize = 11.sp,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    fontWeight = FontWeight.Medium
+                )
+                
+                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                    IconButton(
+                        onClick = onViewDetails,
+                        modifier = Modifier.size(32.dp).background(MaterialTheme.colorScheme.surfaceVariant, CircleShape)
+                    ) {
+                        Icon(Icons.Default.Visibility, "View", Modifier.size(16.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                    IconButton(
+                        onClick = { },
+                        modifier = Modifier.size(32.dp).background(MaterialTheme.colorScheme.surfaceVariant, CircleShape)
+                    ) {
+                        Icon(Icons.Default.FileDownload, "Download", Modifier.size(16.dp), tint = MaterialTheme.colorScheme.onSurfaceVariant)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun MetricSmallBlock(label: String, value: String, valueColor: Color) {
+    Column {
+        Text(
+            text = label,
+            fontSize = 9.sp,
+            fontWeight = FontWeight.Black,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            letterSpacing = 0.5.sp
+        )
+        Text(
+            text = value,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.Bold,
+            color = valueColor,
+            modifier = Modifier.padding(top = 2.dp)
+        )
+    }
+}
+
+@Composable
+fun ReportFilterChip(label: String, isSelected: Boolean, onClick: () -> Unit) {
+    Surface(
+        modifier = Modifier.clickable { onClick() },
+        shape = RoundedCornerShape(10.dp),
+        color = if (isSelected) PrimaryMaroon else MaterialTheme.colorScheme.surface,
+        border = BorderStroke(1.dp, if (isSelected) PrimaryMaroon else MaterialTheme.colorScheme.outlineVariant)
+    ) {
+        Text(
+            text = label,
+            fontSize = 11.sp,
+            fontWeight = FontWeight.Bold,
+            color = if (isSelected) Color.White else MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp)
+        )
+    }
+}

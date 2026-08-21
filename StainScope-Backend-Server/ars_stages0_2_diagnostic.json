@@ -1,0 +1,873 @@
+[
+  {
+    "file": "README_metadata_ars.txt",
+    "type": "non_image",
+    "valid": false,
+    "stage": "File Type Gate",
+    "reason": "Non-image file format (.ini or .txt)"
+  },
+  {
+    "file": "c1\\C1_D28_4x_BF_01.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "uncertain",
+    "confidence": 0.55,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 9.0)."
+    ]
+  },
+  {
+    "file": "c1\\C1_D28_4x_BF_02.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "uncertain",
+    "confidence": 0.55,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 10.5)."
+    ]
+  },
+  {
+    "file": "c1\\C1_D28_4x_BF_03.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "uncertain",
+    "confidence": 0.55,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 11.5)."
+    ]
+  },
+  {
+    "file": "c1\\C1_D28_4x_BF_04.tif",
+    "dims": "4080x3072",
+    "valid": false,
+    "stage": "Stage 1 Stain ID",
+    "reason": "Absence of characteristic ARS red/orange hue signature.",
+    "red_ratio": 0.0018,
+    "blue_ratio": 1.03
+  },
+  {
+    "file": "c1\\C1_D28_4x_BF_05.tif",
+    "dims": "4080x3072",
+    "valid": false,
+    "stage": "Stage 1 Stain ID",
+    "reason": "Absence of characteristic ARS red/orange hue signature.",
+    "red_ratio": 0.0018,
+    "blue_ratio": 1.03
+  },
+  {
+    "file": "c1\\C1_D28_4x_BF_06.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "uncertain",
+    "confidence": 0.55,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 20.3)."
+    ]
+  },
+  {
+    "file": "c1\\C1_D28_4x_BF_07.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "uncertain",
+    "confidence": 0.55,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 15.0)."
+    ]
+  },
+  {
+    "file": "c1\\C1_D28_4x_BF_08.tif",
+    "dims": "4080x3072",
+    "valid": false,
+    "stage": "Stage 1 Stain ID",
+    "reason": "Absence of characteristic ARS red/orange hue signature.",
+    "red_ratio": 0.0007,
+    "blue_ratio": 1.03
+  },
+  {
+    "file": "c1\\C1_D28_4x_BF_09.tif",
+    "dims": "4080x3072",
+    "valid": false,
+    "stage": "Stage 1 Stain ID",
+    "reason": "Absence of characteristic ARS red/orange hue signature.",
+    "red_ratio": 0.0005,
+    "blue_ratio": 1.04
+  },
+  {
+    "file": "c1\\desktop.ini",
+    "type": "non_image",
+    "valid": false,
+    "stage": "File Type Gate",
+    "reason": "Non-image file format (.ini or .txt)"
+  },
+  {
+    "file": "c2\\C2_D28_4x_BF_01.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c2\\C2_D28_4x_BF_02.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c2\\C2_D28_4x_BF_03.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c2\\C2_D28_4x_BF_04.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c2\\C2_D28_4x_BF_05.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c2\\C2_D28_4x_BF_06.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c2\\C2_D28_4x_BF_07.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 17.7)."
+    ]
+  },
+  {
+    "file": "c2\\C2_D28_4x_BF_08.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 22.3)."
+    ]
+  },
+  {
+    "file": "c2\\C2_D28_4x_BF_09.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 24.2)."
+    ]
+  },
+  {
+    "file": "c2\\desktop.ini",
+    "type": "non_image",
+    "valid": false,
+    "stage": "File Type Gate",
+    "reason": "Non-image file format (.ini or .txt)"
+  },
+  {
+    "file": "c3\\C3_D28_4x_BF_01.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 19.7)."
+    ]
+  },
+  {
+    "file": "c3\\C3_D28_4x_BF_02.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c3\\C3_D28_4x_BF_03.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 16.5)."
+    ]
+  },
+  {
+    "file": "c3\\C3_D28_4x_BF_04.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c3\\C3_D28_4x_BF_05.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c3\\C3_D28_4x_BF_06.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c3\\C3_D28_4x_BF_07.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c3\\C3_D28_4x_BF_08.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c3\\C3_D28_4x_BF_09.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 24.4)."
+    ]
+  },
+  {
+    "file": "c3\\desktop.ini",
+    "type": "non_image",
+    "valid": false,
+    "stage": "File Type Gate",
+    "reason": "Non-image file format (.ini or .txt)"
+  },
+  {
+    "file": "c4\\C4_D28_4x_BF_01.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c4\\C4_D28_4x_BF_02.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c4\\C4_D28_4x_BF_03.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c4\\C4_D28_4x_BF_04.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c4\\C4_D28_4x_BF_05.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c4\\C4_D28_4x_BF_06.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c4\\C4_D28_4x_BF_07.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c4\\C4_D28_4x_BF_08.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c4\\C4_D28_4x_BF_09.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c4\\desktop.ini",
+    "type": "non_image",
+    "valid": false,
+    "stage": "File Type Gate",
+    "reason": "Non-image file format (.ini or .txt)"
+  },
+  {
+    "file": "c5\\C5_D28_4x_BF_01.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "uncertain",
+    "confidence": 0.55,
+    "warnings": []
+  },
+  {
+    "file": "c5\\C5_D28_4x_BF_02.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 11.1)."
+    ]
+  },
+  {
+    "file": "c5\\C5_D28_4x_BF_03.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 11.9)."
+    ]
+  },
+  {
+    "file": "c5\\C5_D28_4x_BF_04.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c5\\C5_D28_4x_BF_05.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 19.9)."
+    ]
+  },
+  {
+    "file": "c5\\C5_D28_4x_BF_06.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c5\\C5_D28_4x_BF_07.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c5\\C5_D28_4x_BF_08.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c5\\C5_D28_4x_BF_09.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c5\\desktop.ini",
+    "type": "non_image",
+    "valid": false,
+    "stage": "File Type Gate",
+    "reason": "Non-image file format (.ini or .txt)"
+  },
+  {
+    "file": "c6\\C6_D28_4x_BF_01.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 21.4)."
+    ]
+  },
+  {
+    "file": "c6\\C6_D28_4x_BF_02.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c6\\C6_D28_4x_BF_03.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c6\\C6_D28_4x_BF_04.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c6\\C6_D28_4x_BF_05.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c6\\C6_D28_4x_BF_06.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 24.4)."
+    ]
+  },
+  {
+    "file": "c6\\C6_D28_4x_BF_07.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c6\\C6_D28_4x_BF_08.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c6\\C6_D28_4x_BF_09.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c6\\desktop.ini",
+    "type": "non_image",
+    "valid": false,
+    "stage": "File Type Gate",
+    "reason": "Non-image file format (.ini or .txt)"
+  },
+  {
+    "file": "c7\\C7_D28_4x_BF_01.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c7\\C7_D28_4x_BF_02.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c7\\C7_D28_4x_BF_03.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.88,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 22.0)."
+    ]
+  },
+  {
+    "file": "c7\\C7_D28_4x_BF_04.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.85,
+    "warnings": []
+  },
+  {
+    "file": "c7\\C7_D28_4x_BF_05.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c7\\C7_D28_4x_BF_06.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 24.1)."
+    ]
+  },
+  {
+    "file": "c7\\C7_D28_4x_BF_07.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c7\\C7_D28_4x_BF_08.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c7\\C7_D28_4x_BF_09.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c7\\desktop.ini",
+    "type": "non_image",
+    "valid": false,
+    "stage": "File Type Gate",
+    "reason": "Non-image file format (.ini or .txt)"
+  },
+  {
+    "file": "c8\\C8_D28_4x_BF_01.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "uncertain",
+    "confidence": 0.55,
+    "warnings": []
+  },
+  {
+    "file": "c8\\C8_D28_4x_BF_02.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c8\\C8_D28_4x_BF_03.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c8\\C8_D28_4x_BF_04.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c8\\C8_D28_4x_BF_05.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c8\\C8_D28_4x_BF_06.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c8\\C8_D28_4x_BF_07.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c8\\C8_D28_4x_BF_08.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "c8\\C8_D28_4x_BF_09.tif",
+    "dims": "4080x3072",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": [
+      "Image appears blurry or out-of-focus (Laplacian variance: 23.8)."
+    ]
+  },
+  {
+    "file": "c8\\desktop.ini",
+    "type": "non_image",
+    "valid": false,
+    "stage": "File Type Gate",
+    "reason": "Non-image file format (.ini or .txt)"
+  },
+  {
+    "file": "desktop.ini",
+    "type": "non_image",
+    "valid": false,
+    "stage": "File Type Gate",
+    "reason": "Non-image file format (.ini or .txt)"
+  },
+  {
+    "file": "meta_extra\\desktop.ini",
+    "type": "non_image",
+    "valid": false,
+    "stage": "File Type Gate",
+    "reason": "Non-image file format (.ini or .txt)"
+  },
+  {
+    "file": "meta_extra\\firstday.jpg",
+    "dims": "2048x1537",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "meta_extra\\metadata1.jpg",
+    "dims": "1537x2048",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "meta_extra\\metadata2.jpg",
+    "dims": "1537x2048",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "ARS-compatible",
+    "confidence": 0.95,
+    "warnings": []
+  },
+  {
+    "file": "meta_extra\\pH.jpg",
+    "dims": "2048x1537",
+    "valid": true,
+    "stage": "Passed Stages 0-2",
+    "reason": "Valid ARS microscopy image",
+    "stain_status": "uncertain",
+    "confidence": 0.55,
+    "warnings": []
+  }
+]

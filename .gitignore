@@ -1,0 +1,59 @@
+# ============================================================================
+# StainScope Platform - Root .gitignore
+# ============================================================================
+
+# 1. Unwanted & Local Backup Archives (11GB+ datasets)
+unwanted_folder/
+
+# 2. Local File Upload Storage (Uploaded user micrographs & analysis artifacts)
+StainScope-Backend-Server/storage/micrographs/*
+StainScope-Backend-Server/storage/analysis-overlays/*
+**/storage/micrographs/*
+**/storage/analysis-overlays/*
+
+# 3. Dependencies & Package Managers
+node_modules/
+**/node_modules/
+.venv/
+**/.venv/
+env/
+venv/
+ENV/
+
+# 4. Android Build Outputs & Gradle Caches
+.gradle/
+**/.gradle/
+build/
+**/build/
+.kotlin/
+**/.kotlin/
+local.properties
+*.apk
+*.aab
+*.dex
+
+# 5. Python Bytecode & Pytest Caches
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+**/.pytest_cache/
+
+# 6. IDE & Editor Metadata
+.idea/
+**/.idea/
+.vscode/*
+!.vscode/settings.json
+*.swp
+*.swo
+*~
+
+# 7. Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 8. Environment Secret Variables
+.env.local
+.env.production

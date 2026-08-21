@@ -1,0 +1,16 @@
+{
+  "name": "selenium-tests",
+  "version": "1.0.0",
+  "description": "Selenium E2E Test Suite for StainScope Web",
+  "main": "tests/login-tests.js",
+  "scripts": {
+    "test": "node tests/login-tests.js",
+    "load-test": "node tests/load-tests.js"
+  },
+  "dependencies": {
+    "chromedriver": "^133.0.0",
+    "exceljs": "^4.4.0",
+    "selenium-webdriver": "^4.28.1",
+    "xlsx": "^0.18.5"
+  }
+}

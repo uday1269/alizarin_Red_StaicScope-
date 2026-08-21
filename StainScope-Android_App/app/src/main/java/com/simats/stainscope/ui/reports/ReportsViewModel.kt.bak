@@ -1,0 +1,102 @@
+package com.simats.stainscope.ui.reports
+
+import android.app.Application
+import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import com.simats.stainscope.data.repository.StainScopeRepository
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
+
+data class ReportItem(
+    val id: String,
+    val name: String,
+    val date: String,
+    val magnification: String = "20x Objective",
+    val mineralizedArea: String,
+    val stainIntensity: String,
+    val calciumDensity: String,
+    val noduleCount: String,
+    val status: String,
+    val statusColor: Color,
+    val isSelected: Boolean = false
+)
+
+data class ReportsState(
+    val searchQuery: String = "",
+    val isLoading: Boolean = false,
+    val reports: List<ReportItem> = emptyList()
+)
+
+class ReportsViewModel(application: Application) : AndroidViewModel(application) {
+    private val repository = StainScopeRepository(application)
+
+    private val _uiState = MutableStateFlow(ReportsState())
+    val uiState: StateFlow<ReportsState> = _uiState.asStateFlow()
+
+    init {
+        loadUserAnalyses()
+    }
+
+    fun loadUserAnalyses() {
+        viewModelScope.launch {
+            _uiState.update { it.copy(isLoading = true) }
+            val res = repository.listAnalyses()
+            res.getOrNull()?.let { list ->
+                val items = list.map { dto ->
+                    val areaVal = dto.mineralizedAreaPercent ?: 0.0
+                    val areaStr = String.format("%.1f%%", areaVal)
+                    val odVal = dto.opticalDensity ?: dto.opticalDensityProxy ?: 0.0
+                    val odStr = String.format("%.2f OD", odVal)
+                    val calcVal = dto.calciumDensityUgCm2 ?: 0.0
+                    val calcStr = String.format("%.1f µg/cm²", calcVal)
+                    val countStr = dto.noduleCount?.toString() ?: "0"
+                    val rawDate = dto.analyzedAt ?: dto.createdAt
+                    val dateStr = rawDate?.take(16)?.replace("T", " ") ?: "Recent"
+                    val titleStr = dto.sampleTitle?.ifEmpty { null } ?: "ARS Micrograph (${dto.id.take(8)})"
+                    
+                    val (statusText, statusColor) = when {
+                        areaVal >= 40.0 -> "High Mineralization" to Color(0xFF4CAF50)
+                        areaVal >= 15.0 -> "Moderate Mineralization" to Color(0xFFF57C00)
+                        else -> "Low Mineralization" to Color(0xFF757575)
+                    }
+
+                    ReportItem(
+                        id = dto.id,
+                        name = titleStr,
+                        date = dateStr,
+                        mineralizedArea = areaStr,
+                        stainIntensity = odStr,
+                        calciumDensity = calcStr,
+                        noduleCount = countStr,
+                        status = statusText,
+                        statusColor = statusColor
+                    )
+                }
+                _uiState.update { it.copy(reports = items, isLoading = false) }
+            } ?: run {
+                _uiState.update { it.copy(isLoading = false) }
+            }
+        }
+    }
+
+    fun onSearchQueryChange(query: String) {
+        _uiState.update { it.copy(searchQuery = query) }
+    }
+
+    fun toggleReportSelection(reportId: String) {
+        _uiState.update { state ->
+            val updatedReports = state.reports.map {
+                if (it.id == reportId) it.copy(isSelected = !it.isSelected) else it
+            }
+            state.copy(reports = updatedReports)
+        }
+    }
+
+    fun getSelectedReportIds(): List<String> {
+        return _uiState.value.reports.filter { it.isSelected }.map { it.id }
+    }
+}

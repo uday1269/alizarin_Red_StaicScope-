@@ -1,0 +1,354 @@
+{
+  "total_validated_samples": 10,
+  "mean_dice": 0.0474,
+  "mean_iou": 0.0258,
+  "mean_precision": 0.0259,
+  "mean_recall": 0.4947,
+  "mean_nodule_count_abs_error": 59761.0,
+  "mean_fp_nodules": 56174.1,
+  "mean_fn_nodules": 15.0,
+  "worst_case_samples": [
+    {
+      "sample_id": "C2_D28_4x_BF_04",
+      "metrics": {
+        "dice": 0.2478,
+        "iou": 0.1414,
+        "precision": 0.1418,
+        "recall": 0.9845
+      },
+      "gt_nodule_count": 11036,
+      "cv_nodule_count": 117124,
+      "count_abs_error": 106088,
+      "fp_nodules": 82146,
+      "fn_nodules": 49,
+      "mineralized_area_percent": 53.36,
+      "quality_warnings": []
+    },
+    {
+      "sample_id": "C2_D28_4x_BF_02",
+      "metrics": {
+        "dice": 0.0436,
+        "iou": 0.0223,
+        "precision": 0.0223,
+        "recall": 0.9976
+      },
+      "gt_nodule_count": 2224,
+      "cv_nodule_count": 102153,
+      "count_abs_error": 99929,
+      "fp_nodules": 97054,
+      "fn_nodules": 21,
+      "mineralized_area_percent": 42.53,
+      "quality_warnings": []
+    },
+    {
+      "sample_id": "C2_D28_4x_BF_05",
+      "metrics": {
+        "dice": 0.0756,
+        "iou": 0.0393,
+        "precision": 0.0393,
+        "recall": 0.9827
+      },
+      "gt_nodule_count": 2771,
+      "cv_nodule_count": 91308,
+      "count_abs_error": 88537,
+      "fp_nodules": 84926,
+      "fn_nodules": 43,
+      "mineralized_area_percent": 31.44,
+      "quality_warnings": []
+    },
+    {
+      "sample_id": "C2_D28_4x_BF_01",
+      "metrics": {
+        "dice": 0.0742,
+        "iou": 0.0385,
+        "precision": 0.0385,
+        "recall": 0.994
+      },
+      "gt_nodule_count": 2859,
+      "cv_nodule_count": 86711,
+      "count_abs_error": 83852,
+      "fp_nodules": 79726,
+      "fn_nodules": 20,
+      "mineralized_area_percent": 36.78,
+      "quality_warnings": []
+    },
+    {
+      "sample_id": "C2_D28_4x_BF_03",
+      "metrics": {
+        "dice": 0.0333,
+        "iou": 0.0169,
+        "precision": 0.0169,
+        "recall": 0.9884
+      },
+      "gt_nodule_count": 1136,
+      "cv_nodule_count": 82432,
+      "count_abs_error": 81296,
+      "fp_nodules": 79981,
+      "fn_nodules": 17,
+      "mineralized_area_percent": 28.0,
+      "quality_warnings": []
+    },
+    {
+      "sample_id": "C1_D28_4x_BF_06",
+      "metrics": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "gt_nodule_count": 0,
+      "cv_nodule_count": 35446,
+      "count_abs_error": 35446,
+      "fp_nodules": 35446,
+      "fn_nodules": 0,
+      "mineralized_area_percent": 3.43,
+      "quality_warnings": [
+        "Image appears blurry or out-of-focus (Laplacian variance: 20.3)."
+      ]
+    },
+    {
+      "sample_id": "C1_D28_4x_BF_03",
+      "metrics": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "gt_nodule_count": 0,
+      "cv_nodule_count": 28172,
+      "count_abs_error": 28172,
+      "fp_nodules": 28172,
+      "fn_nodules": 0,
+      "mineralized_area_percent": 4.47,
+      "quality_warnings": [
+        "Image appears blurry or out-of-focus (Laplacian variance: 11.5)."
+      ]
+    },
+    {
+      "sample_id": "C1_D28_4x_BF_01",
+      "metrics": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "gt_nodule_count": 0,
+      "cv_nodule_count": 26898,
+      "count_abs_error": 26898,
+      "fp_nodules": 26898,
+      "fn_nodules": 0,
+      "mineralized_area_percent": 4.79,
+      "quality_warnings": [
+        "Image appears blurry or out-of-focus (Laplacian variance: 9.0)."
+      ]
+    },
+    {
+      "sample_id": "C1_D28_4x_BF_02",
+      "metrics": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "gt_nodule_count": 0,
+      "cv_nodule_count": 24259,
+      "count_abs_error": 24259,
+      "fp_nodules": 24259,
+      "fn_nodules": 0,
+      "mineralized_area_percent": 2.35,
+      "quality_warnings": [
+        "Image appears blurry or out-of-focus (Laplacian variance: 10.5)."
+      ]
+    },
+    {
+      "sample_id": "C1_D28_4x_BF_07",
+      "metrics": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "gt_nodule_count": 0,
+      "cv_nodule_count": 23133,
+      "count_abs_error": 23133,
+      "fp_nodules": 23133,
+      "fn_nodules": 0,
+      "mineralized_area_percent": 2.16,
+      "quality_warnings": [
+        "Image appears blurry or out-of-focus (Laplacian variance: 15.0)."
+      ]
+    }
+  ],
+  "all_samples": [
+    {
+      "sample_id": "C2_D28_4x_BF_04",
+      "metrics": {
+        "dice": 0.2478,
+        "iou": 0.1414,
+        "precision": 0.1418,
+        "recall": 0.9845
+      },
+      "gt_nodule_count": 11036,
+      "cv_nodule_count": 117124,
+      "count_abs_error": 106088,
+      "fp_nodules": 82146,
+      "fn_nodules": 49,
+      "mineralized_area_percent": 53.36,
+      "quality_warnings": []
+    },
+    {
+      "sample_id": "C2_D28_4x_BF_02",
+      "metrics": {
+        "dice": 0.0436,
+        "iou": 0.0223,
+        "precision": 0.0223,
+        "recall": 0.9976
+      },
+      "gt_nodule_count": 2224,
+      "cv_nodule_count": 102153,
+      "count_abs_error": 99929,
+      "fp_nodules": 97054,
+      "fn_nodules": 21,
+      "mineralized_area_percent": 42.53,
+      "quality_warnings": []
+    },
+    {
+      "sample_id": "C2_D28_4x_BF_05",
+      "metrics": {
+        "dice": 0.0756,
+        "iou": 0.0393,
+        "precision": 0.0393,
+        "recall": 0.9827
+      },
+      "gt_nodule_count": 2771,
+      "cv_nodule_count": 91308,
+      "count_abs_error": 88537,
+      "fp_nodules": 84926,
+      "fn_nodules": 43,
+      "mineralized_area_percent": 31.44,
+      "quality_warnings": []
+    },
+    {
+      "sample_id": "C2_D28_4x_BF_01",
+      "metrics": {
+        "dice": 0.0742,
+        "iou": 0.0385,
+        "precision": 0.0385,
+        "recall": 0.994
+      },
+      "gt_nodule_count": 2859,
+      "cv_nodule_count": 86711,
+      "count_abs_error": 83852,
+      "fp_nodules": 79726,
+      "fn_nodules": 20,
+      "mineralized_area_percent": 36.78,
+      "quality_warnings": []
+    },
+    {
+      "sample_id": "C2_D28_4x_BF_03",
+      "metrics": {
+        "dice": 0.0333,
+        "iou": 0.0169,
+        "precision": 0.0169,
+        "recall": 0.9884
+      },
+      "gt_nodule_count": 1136,
+      "cv_nodule_count": 82432,
+      "count_abs_error": 81296,
+      "fp_nodules": 79981,
+      "fn_nodules": 17,
+      "mineralized_area_percent": 28.0,
+      "quality_warnings": []
+    },
+    {
+      "sample_id": "C1_D28_4x_BF_06",
+      "metrics": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "gt_nodule_count": 0,
+      "cv_nodule_count": 35446,
+      "count_abs_error": 35446,
+      "fp_nodules": 35446,
+      "fn_nodules": 0,
+      "mineralized_area_percent": 3.43,
+      "quality_warnings": [
+        "Image appears blurry or out-of-focus (Laplacian variance: 20.3)."
+      ]
+    },
+    {
+      "sample_id": "C1_D28_4x_BF_03",
+      "metrics": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "gt_nodule_count": 0,
+      "cv_nodule_count": 28172,
+      "count_abs_error": 28172,
+      "fp_nodules": 28172,
+      "fn_nodules": 0,
+      "mineralized_area_percent": 4.47,
+      "quality_warnings": [
+        "Image appears blurry or out-of-focus (Laplacian variance: 11.5)."
+      ]
+    },
+    {
+      "sample_id": "C1_D28_4x_BF_01",
+      "metrics": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "gt_nodule_count": 0,
+      "cv_nodule_count": 26898,
+      "count_abs_error": 26898,
+      "fp_nodules": 26898,
+      "fn_nodules": 0,
+      "mineralized_area_percent": 4.79,
+      "quality_warnings": [
+        "Image appears blurry or out-of-focus (Laplacian variance: 9.0)."
+      ]
+    },
+    {
+      "sample_id": "C1_D28_4x_BF_02",
+      "metrics": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "gt_nodule_count": 0,
+      "cv_nodule_count": 24259,
+      "count_abs_error": 24259,
+      "fp_nodules": 24259,
+      "fn_nodules": 0,
+      "mineralized_area_percent": 2.35,
+      "quality_warnings": [
+        "Image appears blurry or out-of-focus (Laplacian variance: 10.5)."
+      ]
+    },
+    {
+      "sample_id": "C1_D28_4x_BF_07",
+      "metrics": {
+        "dice": 0.0,
+        "iou": 0.0,
+        "precision": 0.0,
+        "recall": 0.0
+      },
+      "gt_nodule_count": 0,
+      "cv_nodule_count": 23133,
+      "count_abs_error": 23133,
+      "fp_nodules": 23133,
+      "fn_nodules": 0,
+      "mineralized_area_percent": 2.16,
+      "quality_warnings": [
+        "Image appears blurry or out-of-focus (Laplacian variance: 15.0)."
+      ]
+    }
+  ]
+}
