@@ -43,8 +43,30 @@ function recordResult(id, category, title, precondition, testData, expected, act
  */
 async function initDriver() {
   console.log('🚀 Initializing Selenium WebDriver for StainScope E2E Testing...');
+  const isWindows = process.platform === 'win32';
   
-  // Try Microsoft Edge first (native on Windows)
+  if (!isWindows) {
+    try {
+      const chromeOptions = new chrome.Options();
+      chromeOptions.addArguments(
+        '--headless=new',
+        '--disable-gpu',
+        '--no-sandbox',
+        '--disable-dev-shm-usage',
+        '--window-size=1920,1080'
+      );
+      const driver = await new Builder()
+        .forBrowser('chrome')
+        .setChromeOptions(chromeOptions)
+        .build();
+      console.log('✅ Google Chrome WebDriver initialized successfully in headless mode.');
+      return driver;
+    } catch (e) {
+      console.warn('Chrome init error, falling back:', e.message);
+    }
+  }
+
+  // Try Microsoft Edge first on Windows
   try {
     const edgeOptions = new edge.Options();
     edgeOptions.addArguments(
