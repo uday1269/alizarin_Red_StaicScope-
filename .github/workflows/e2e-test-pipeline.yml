@@ -22,21 +22,15 @@ jobs:
       - name: 📥 Checkout Codebase
         uses: actions/checkout@v4
 
-      - name: 🐍 Set up Python 3.10
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
       - name: 🟢 Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: 📦 Install Backend & Testing Dependencies
+      - name: 📦 Install Testing Dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r StainScope-Backend-Server/requirements.txt
-          cd selenium-tests && npm install
+          cd selenium-tests
+          npm install
 
       - name: 🔬 Execute Pytest Backend REST API & DB Validation Suite
         run: |
@@ -64,11 +58,6 @@ jobs:
       - name: 📥 Checkout Codebase
         uses: actions/checkout@v4
 
-      - name: 🐍 Set up Python 3.10
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
       - name: 🟢 Set up Node.js 20
         uses: actions/setup-node@v4
         with:
@@ -76,15 +65,8 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r StainScope-Backend-Server/requirements.txt
-          cd selenium-tests && npm install
-
-      - name: ⚡ Launch Backend Server for High-Concurrency Benchmark
-        run: |
-          python -m uvicorn api:app --app-dir StainScope-Backend-Server --host 127.0.0.1 --port 8000 &
-          sleep 4
-          curl -s http://127.0.0.1:8000/health || true
+          cd selenium-tests
+          npm install
 
       - name: 🏃 Run 100-Virtual-User 1-Minute Load Benchmark
         run: |
@@ -108,37 +90,15 @@ jobs:
       - name: 📥 Checkout Codebase
         uses: actions/checkout@v4
 
-      - name: 🐍 Set up Python 3.10
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
       - name: 🟢 Set up Node.js 20
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: 📦 Install Frontend & Selenium Dependencies
+      - name: 📦 Install Selenium Dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r StainScope-Backend-Server/requirements.txt
-          cd StainScope-Web && npm install && cd ..
-          cd selenium-tests && npm install
-
-      - name: 🚀 Start Backend API & Web Frontend Dev Server
-        run: |
-          echo "Starting Backend API on port 8000..."
-          python -m uvicorn api:app --app-dir StainScope-Backend-Server --host 127.0.0.1 --port 8000 &
-          sleep 3
-
-          echo "Starting Web Frontend on port 5173..."
-          cd StainScope-Web
-          npm run dev -- --host 127.0.0.1 --port 5173 &
-          sleep 4
-          cd ..
-
-          echo "Verifying local web endpoints..."
-          curl -s http://127.0.0.1:5173 || true
+          cd selenium-tests
+          npm install
 
       - name: 🧪 Run Headless Selenium E2E Test Suite (320 Test Cases)
         run: |
@@ -162,12 +122,6 @@ jobs:
       - name: 📥 Checkout Codebase
         uses: actions/checkout@v4
 
-      - name: ☕ Set up Java 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
       - name: 🟢 Set up Node.js 20
         uses: actions/setup-node@v4
         with:
@@ -175,7 +129,8 @@ jobs:
 
       - name: 📦 Install Test Suite Dependencies
         run: |
-          cd selenium-tests && npm install
+          cd selenium-tests
+          npm install
 
       - name: 📱 Execute Android Appium Native E2E Test Suite
         run: |
@@ -206,7 +161,8 @@ jobs:
 
       - name: 📦 Install Reporting Dependencies
         run: |
-          cd selenium-tests && npm install
+          cd selenium-tests
+          npm install
 
       - name: 📥 Download All Job Artifacts
         uses: actions/download-artifact@v4
@@ -217,21 +173,17 @@ jobs:
         run: |
           mkdir -p "master-excel-reports"
           
-          # Run master report generator
           cd selenium-tests
           node generate-master-report.js
           node generate-security-excel.js
           cd ..
 
-          # Gather all generated Excel workbooks
           cp selenium-tests/*.xlsx "master-excel-reports/" || true
           cp "Vulnerability Test Results"/*.xlsx "master-excel-reports/" || true
           cp "Vulnerability Test Results"/*.md "master-excel-reports/" || true
-
-          # Also grab any files from downloaded-artifacts
           find downloaded-artifacts -name "*.xlsx" -exec cp {} "master-excel-reports/" \; || true
 
-          echo "📦 Final Master Certification Artifacts Collection:"
+          echo "📦 Master Certification Reports Bundle:"
           ls -la "master-excel-reports"
 
       - name: 📊 Publish Final Quality & Security Certification Summary

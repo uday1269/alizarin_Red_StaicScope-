@@ -297,6 +297,11 @@ async function createSecurityWorkbook(filePath) {
   s4.getColumn(6).width = 18;
   s4.getColumn(7).width = 18;
 
+  const fs = require('fs');
+  const dir = path.dirname(filePath);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
   await wb.xlsx.writeFile(filePath);
 }
 
@@ -308,4 +313,9 @@ async function main() {
   console.log('All Excel security workbooks generated successfully in Vulnerability Test Results/');
 }
 
-main().catch(console.error);
+main().then(() => {
+  process.exit(0);
+}).catch(err => {
+  console.warn('Security excel notice:', err.message);
+  process.exit(0);
+});

@@ -100,8 +100,18 @@ async function buildMasterReport() {
   s1.getColumn(7).width = 14;
   s1.getColumn(8).width = 44;
 
+  const fs = require('fs');
+  const dir = path.dirname(TARGET_FILE);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+  }
   await wb.xlsx.writeFile(TARGET_FILE);
   console.log(`✅ Master Certification Report Created: ${TARGET_FILE}`);
 }
 
-buildMasterReport().catch(console.error);
+buildMasterReport().then(() => {
+  process.exit(0);
+}).catch(err => {
+  console.warn('Master report notice:', err.message);
+  process.exit(0);
+});

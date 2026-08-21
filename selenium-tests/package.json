@@ -5,10 +5,13 @@
   "main": "tests/login-tests.js",
   "scripts": {
     "test": "node tests/login-tests.js",
-    "load-test": "node tests/load-tests.js"
+    "load-test": "node tests/load-tests.js",
+    "backend-test": "node run-backend-tests.js",
+    "security-test": "node run-security-tests.js",
+    "android-test": "node tests/android-tests.js",
+    "master-report": "node generate-master-report.js"
   },
   "dependencies": {
-    "chromedriver": "^133.0.0",
     "exceljs": "^4.4.0",
     "selenium-webdriver": "^4.28.1",
     "xlsx": "^0.18.5"
